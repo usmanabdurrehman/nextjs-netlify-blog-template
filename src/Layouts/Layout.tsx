@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Navigation from "./Navigation";
 
 import { Navbar, Footer, Container } from "components";
 
