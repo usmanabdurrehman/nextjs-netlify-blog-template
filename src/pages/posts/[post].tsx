@@ -32,6 +32,7 @@ export type Props = {
   author: string;
   description?: string;
   source: MdxRemote.Source;
+  blogImage:string;
 };
 
 const components = { InstagramEmbed, YouTube, TwitterTweetEmbed };

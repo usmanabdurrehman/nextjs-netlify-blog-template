@@ -18,7 +18,7 @@ type Props = {
   title: string;
   date: Date;
   slug: string;
-  tags: string[];
+  tags: object[];
   author: string;
   blogImage:string;
   description?: string;

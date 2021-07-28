@@ -4,9 +4,10 @@ import config from "lib/config";
 type Props = {
   title?: string;
   description?: string;
-  keywords?: string[];
+  keywords?: object[];
   author?: string;
   url: string;
+  image:string;
 };
 export default function BasicMeta({
   title,
