@@ -14,6 +14,7 @@ export default function BasicMeta({
   keywords,
   author,
   url,
+  image
 }: Props) {
   return (
     <Head>
@@ -34,6 +35,7 @@ export default function BasicMeta({
       />
       {author ? <meta name="author" content={author} /> : null}
       <link rel="canonical" href={config.base_url + url} />
+      <meta property="image" content={image ? image : null} />
     </Head>
   );
 }

@@ -3,6 +3,8 @@ import styles from "./ShareList.module.css";
 
 import { useRouter } from 'next/router';
 
+import config from "lib/config";
+
 import {
 	FacebookShareButton,
 	InstapaperShareButton,
@@ -21,18 +23,8 @@ import {
 } from "react-share";
 
 export default function ShareList() {
-
-// 	const [URL, setURL] = useState("")
-// 
-// 	useEffect(() => {
-// 		setURL(window.location.href)
-// 	}, [])
-
 	const { asPath } = useRouter()
-	console.log('url',asPath)
-
-	// console.log(URL)
-	const URL = 'https://silly-pare-7b7e41.netlify.app' + asPath
+	const URL = config.base_url + asPath
 
 	return (
 		<div className={styles.sharelist}>

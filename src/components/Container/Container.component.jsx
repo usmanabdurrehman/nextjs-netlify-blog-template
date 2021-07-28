@@ -16,7 +16,7 @@ export default function Container({ children, classes, maxWidth, disableGutters 
       lg: 1280,
       xl: 1920,
     };
-    return maxWidthMapper[maxWidth] || maxWidthMapper.lg;
+    return maxWidthMapper[maxWidth] || maxWidthMapper.md;
   };
 
   return (
@@ -45,6 +45,5 @@ Container.propTypes = {
 };
 
 Container.defaultProps = {
-  maxWidth:'lg',
   disableGutters:false
 };

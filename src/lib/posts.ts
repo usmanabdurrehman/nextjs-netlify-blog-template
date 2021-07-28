@@ -37,6 +37,7 @@ export function fetchPostContent(): PostContent[] {
       const matterData = matterResult.data as {
         date: string;
         title: string;
+        blogImage:string,
         tags: string[];
         slug: string;
         fullPath: string,
@@ -44,7 +45,7 @@ export function fetchPostContent(): PostContent[] {
       matterData.fullPath = fullPath;
 
       const slug = fileName.replace(/\.mdx$/, "");
-
+      slug=='cm-punk' && console.log(matterResult)
       // Validate slug string
       if (matterData.slug !== slug) {
         throw new Error(

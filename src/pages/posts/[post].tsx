@@ -13,7 +13,18 @@ import InstagramEmbed from "react-instagram-embed";
 import YouTube from "react-youtube";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
+import { countPosts, listPostContent, PostContent } from "lib/posts";
+import { listTags, TagContent } from "lib/tags";
+
+import { Layout } from "Layouts";
+import classes from "styles/postpage.module.css";
+
+import Link from "next/link";
+
+import {PostCard} from 'components'
+
 export type Props = {
+  posts: object[];
   title: string;
   dateString: string;
   slug: string;
@@ -39,23 +50,36 @@ export default function Post(props: Props) {
     author,
     description = "",
     source,
+    blogImage,
+    posts,
   } = props;
 
-  console.log("post props", props);
-
   const content = hydrate(source, { components });
-  console.log('content',content)
   return (
-    <PostLayout
-      title={title}
-      date={parseISO(dateString)}
-      slug={slug}
-      tags={tags}
-      author={author}
-      description={description}
-    >
-      {content}
-    </PostLayout>
+    <Layout>
+      <div className={classes.wrapper}>
+        <PostLayout
+          title={title}
+          date={parseISO(dateString)}
+          slug={slug}
+          tags={tags}
+          author={author}
+          description={description}
+          blogImage={blogImage}
+        >
+          {content}
+        </PostLayout>
+        <div className={classes.sidebarWrapper}>
+          <div className={classes.recentHeader}>Recent</div>
+          <div className={classes.sidebarPosts}>
+            {posts
+              .filter((post) => post.slug !== slug)
+              .map((post) => <PostCard post={post}/>)
+            }
+          </div>
+        </div>
+      </div>
+    </Layout>
   );
 }
 
@@ -76,12 +100,22 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   });
   const mdxSource = await renderToString(content, { components, scope: data });
+
+  const posts = listPostContent(1, 3);
+  const tags = listTags();
+  const pagination = {
+    current: 1,
+    pages: Math.ceil(countPosts() / 3),
+  };
   return {
     props: {
+      posts,
+      tags,
       title: data.title,
       dateString: data.date,
       slug: data.slug,
       description: "",
+      blogImage: data.blogImage ? data.blogImage : null,
       tags: data.tags,
       author: data.author,
       source: mdxSource,

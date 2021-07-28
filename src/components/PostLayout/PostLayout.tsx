@@ -3,7 +3,6 @@ import styles from "../../../public/styles/content.module.css";
 import Author from "../Author";
 import Copyright from "../Copyright";
 import Date from "../Date";
-import Layout from "../Layout";
 import BasicMeta from "../meta/BasicMeta";
 import JsonLdMeta from "../meta/JsonLdMeta";
 import OpenGraphMeta from "../meta/OpenGraphMeta";
@@ -15,7 +14,7 @@ import { getTag } from "../../lib/tags";
 
 import classes from "./PostLayout.module.css";
 
-import { Container, ShareList } from "components";
+import { ShareList } from "components";
 
 type Props = {
   title: string;
@@ -32,13 +31,14 @@ export default function PostLayout({
   slug,
   author,
   tags,
+  blogImage,
   description = "",
   children,
 }: Props) {
   const keywords = tags.map((it) => getTag(it).name);
   const authorName = getAuthor(author).name;
   return (
-    <Layout>
+    <div className={classes.postLayout}>
       <BasicMeta
         url={`/posts/${slug}`}
         title={title}
@@ -54,6 +54,7 @@ export default function PostLayout({
         url={`/posts/${slug}`}
         title={title}
         description={description}
+        image={blogImage}
       />
       <JsonLdMeta
         url={`/posts/${slug}`}
@@ -63,7 +64,7 @@ export default function PostLayout({
         author={authorName}
         description={description}
       />
-      <Container>
+      <div className='wrapper'>
         <article>
           <header>
             <h1>{title}</h1>
@@ -71,14 +72,13 @@ export default function PostLayout({
               <div className={"metadata"}>
                 <div>
                   <Date date={date} />
-                </div>
-                <div>
                   <Author author={getAuthor(author)} />
                 </div>
               </div>
               <ShareList/>  
             </div>
           </header>
+          {blogImage && <img src={blogImage} className={'blogImage'}/>}
           <div className={styles.content}>{children}</div>
           <ul className={"tag-list"}>
             {tags.map((it, i) => (
@@ -88,15 +88,13 @@ export default function PostLayout({
             ))}
           </ul>
         </article>
-        <footer>
-          <div className={"social-list"}>
-            <SocialList />
-          </div>
-          <Copyright />
-        </footer>
-      </Container>
+      </div>
       <style jsx>
         {`
+          .blogImage {
+            width: 100%;
+            margin-top:15px;
+          }
           .container {
             display: block;
             max-width: 36rem;
@@ -244,6 +242,6 @@ export default function PostLayout({
           }
         `}
       </style>
-    </Layout>
+    </div>
   );
 }

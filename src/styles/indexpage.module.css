@@ -1,0 +1,43 @@
+.wrapper{
+	display: grid;
+	grid-template-columns: 1fr 250px;
+	grid-gap: 30px;
+}
+
+.posts{
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+	grid-gap: 20px;
+}
+
+.mainPost{
+	margin:0;
+}
+
+.sidebarPosts .post{
+	margin-top: 20px;
+}
+
+.recentHeader{
+	background-color: var(--secondary);
+	color:white;
+	padding:10px;
+	border-radius: 0 10px 0 10px;
+	display: inline-block;
+}
+
+@media (max-width: 905px) {
+	.wrapper {
+		display: block;
+	}
+
+	.sidebarPosts {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-gap: 20px;
+	}
+
+	.sidebarWrapper{
+		margin-top:30px;
+	}
+}
