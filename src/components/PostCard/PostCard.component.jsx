@@ -5,7 +5,9 @@ import Link from "next/link";
 
 import { classNames } from "utils";
 
-export default function PostCard({ post, bigHeader, className }) {
+import PropTypes from 'prop-types'
+
+export default function PostCard({ post, bigHeader=false, className='' }) {
 	return (
 		<Link href={"/posts/" + post.slug}>
 			<div
@@ -24,3 +26,9 @@ export default function PostCard({ post, bigHeader, className }) {
 		</Link>
 	);
 }
+
+// PostCard.propTypes = {
+// 	post:PropTypes.arrayOf(PropTypes.object),
+//   	bigHeader:PropTypes.bool,
+//   	className:PropTypes.string
+// }

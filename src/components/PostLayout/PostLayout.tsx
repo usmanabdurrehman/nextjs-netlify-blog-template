@@ -18,7 +18,7 @@ type Props = {
   title: string;
   date: Date;
   slug: string;
-  tags: object[];
+  tags: string[];
   author: string;
   blogImage:string;
   description?: string;
@@ -43,6 +43,7 @@ export default function PostLayout({
         title={title}
         keywords={keywords}
         description={description}
+        image={blogImage}
       />
       <TwitterCardMeta
         url={`/posts/${slug}`}
