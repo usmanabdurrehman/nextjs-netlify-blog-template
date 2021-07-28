@@ -20,6 +20,7 @@ type Props = {
   slug: string;
   tags: string[];
   author: string;
+  blogImage:string;
   description?: string;
   children: React.ReactNode;
 };
