@@ -4,20 +4,20 @@ import { Navbar, Footer, Container } from "components";
 
 import Link from "next/link";
 
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+// import NProgress from "nprogress";
+// import "nprogress/nprogress.css";
 
-import Router from "next/router";
+// import Router from "next/router";
 
 import classes from "./Layout.module.css";
 
-NProgress.configure({ showSpinner: false });
-Router.onRouteChangeStart = (url) => {
-  console.log(`Loading: ${url} ...`);
-  NProgress.start();
-};
-Router.onRouteChangeComplete = () => NProgress.done();
-Router.onRouteChangeError = () => NProgress.done();
+// NProgress.configure({ showSpinner: false });
+// Router.onRouteChangeStart = (url) => {
+//   console.log(`Loading: ${url} ...`);
+//   NProgress.start();
+// };
+// Router.onRouteChangeComplete = () => NProgress.done();
+// Router.onRouteChangeError = () => NProgress.done();
 
 type Props = {
   children: React.ReactNode;
