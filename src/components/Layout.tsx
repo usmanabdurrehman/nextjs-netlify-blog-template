@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
 
+import { Navbar } from "components";
+
+import Link from "next/link";
+
 type Props = {
   children: React.ReactNode;
 };
@@ -14,33 +18,21 @@ export default function Layout({ children }: Props) {
         <link rel="apple-touch-icon" href="/icon.png" />
         <meta name="theme-color" content="#fff" />
       </Head>
-      <nav>
-        <Navigation />
-      </nav>
-      <main>{children}</main>
-      <style jsx>
-        {`
-          .root {
-            display: block;
-            padding: 4rem 0;
-            box-sizing: border-box;
-            height: 100%;
-          }
+      <Navbar
+        logo="Wrestling Insight"
+        menuItems={[
+          <Link href="/posts">posts</Link>,
+          <Link href="/">about</Link>,
+        ]}
+      />
+      <main>
+        {children}
+        <style jsx>{`
           main {
-            display: flex;
-            min-height: 100%;
+            margin-top: 30px;
           }
-          @media (min-width: 769px) {
-            .root {
-              display: flex;
-              flex: 1 0 auto;
-            }
-            main {
-              flex: 1 0 auto;
-            }
-          }
-        `}
-      </style>
+        `}</style>
+      </main>
     </div>
   );
 }

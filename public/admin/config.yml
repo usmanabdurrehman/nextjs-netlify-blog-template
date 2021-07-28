@@ -104,6 +104,10 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+      - label: "Blog Main Image"
+        name: "blogImage"
+        widget: "image"
+        allow_multiple: false
       - label: "Publish Date"
         name: "date"
         widget: "datetime"

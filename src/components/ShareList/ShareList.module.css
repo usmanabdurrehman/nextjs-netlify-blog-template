@@ -1,0 +1,7 @@
+.sharelist{
+	display: flex;
+}
+
+.sharelist>* + *{
+	margin-left: 10px;
+}
