@@ -23,7 +23,7 @@ export default function Navbar({ classes }) {
     <nav className={styles.navbar}>
       <Container classes={{container:styles.navbarWrapper}}>
         <h2 className={styles.logo}>
-          <Link href="/">WrestlingInsight</Link>
+          <Link href="/">WrestlingInsights</Link>
         </h2>
       </Container>
     </nav>

@@ -1,12 +1,12 @@
 import theme from "styles/theme.module.css";
 
-export let returnDefault = ({ color, variant }) => {
+export let returnDefault = ({ color, variant, array, value }) => {
   let colors = ["primary", "success", "warning", "danger"];
   let variants = ["filled", "outlined"];
 
-  let value = color || variant;
-  let array = color ? colors : variant;
-  return array.includes(value) ? value : array[0];
+  let Value = value || color || variant;
+  let Array = array || (color ? colors : variant);
+  return array.includes(Value) ? Value : Array[0];
 };
 
 export let isEmpty = (value) => {
@@ -21,10 +21,7 @@ export let classNames = (classMapping) => {
   return classes.join(" ");
 };
 
-export let typeToColorMapping = ({
-  color,
-  variant = "filled",
-}) => {
+export let typeToColorMapping = ({ color, variant = "filled" }) => {
   let classString = `${returnDefault({ variant })}-${returnDefault({ color })}`;
   return theme[classString];
 };

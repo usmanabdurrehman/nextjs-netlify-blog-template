@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 export default function Footer() {
 	return (
 		<footer className={styles.footer}>
-			WrestlingInsight, &copy; 2021
+			WrestlingInsights, &copy; 2021
 		</footer>
 	)
 }

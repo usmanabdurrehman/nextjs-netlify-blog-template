@@ -1,31 +1,33 @@
 import React from "react";
 import styles from "./Container.module.css";
 
-import { classNames } from "utils";
+import { classNames, returnDefault } from "utils";
 
 import PropTypes from "prop-types";
 
 // Have to convert these inline styles to classes
 
-export default function Container({ children, classes, maxWidth, disableGutters }) {
+export default function Container({
+  children,
+  classes,
+  maxWidth,
+  disableGutters,
+}) {
   let maxWidthMapper = (maxWidth) => {
-    let maxWidthMapper = {
-      xs: 0,
-      sm: 600,
-      md: 960,
-      lg: 1280,
-      xl: 1920,
-    };
-    return maxWidthMapper[maxWidth] || maxWidthMapper.md;
+    return `width-${returnDefault({
+      array: ["md", "xs", "sm", "lg", "xl"],
+      value: maxWidth,
+    })}`;
   };
 
   return (
     <div
       className={classNames({
         [styles.container]: true,
+        [styles[maxWidthMapper(maxWidth)]]: true,
+        [styles["no-padding"]]: disableGutters,
         [classes?.container]: classes?.container,
       })}
-      style={{ maxWidth: maxWidthMapper(maxWidth), padding: disableGutters ? 0 : '0 16px' }}
     >
       {children}
     </div>
@@ -33,17 +35,11 @@ export default function Container({ children, classes, maxWidth, disableGutters 
 }
 
 Container.propTypes = {
-  maxWidth: PropTypes.oneOf([
-    "xs",
-    "sm",
-    "md",
-    "lg",
-    "xl",
-  ]),
-  disableGutters:PropTypes.bool,
-  classes:PropTypes.object
+  maxWidth: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+  disableGutters: PropTypes.bool,
+  classes: PropTypes.object,
 };
 
 Container.defaultProps = {
-  disableGutters:false
+  disableGutters: false,
 };
