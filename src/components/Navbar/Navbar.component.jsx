@@ -20,13 +20,13 @@ export default function Navbar({ classes }) {
   };
 
   return (
-    <div className={styles.navbar}>
+    <nav className={styles.navbar}>
       <Container classes={{container:styles.navbarWrapper}}>
         <h2 className={styles.logo}>
-          <Link href="/">Wrestling Insight</Link>
+          <Link href="/">WrestlingInsight</Link>
         </h2>
       </Container>
-    </div>
+    </nav>
   );
 }
 

@@ -1,27 +1,29 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+
 import renderToString from "next-mdx-remote/render-to-string";
 import { MdxRemote } from "next-mdx-remote/types";
 import hydrate from "next-mdx-remote/hydrate";
+
 import matter from "gray-matter";
-import { fetchPostContent } from "../../lib/posts";
+
 import fs from "fs";
 import yaml from "js-yaml";
 import { parseISO } from "date-fns";
-import PostLayout from "../../components/PostLayout/PostLayout";
 
 import InstagramEmbed from "react-instagram-embed";
 import YouTube from "react-youtube";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
-import { countPosts, listPostContent, PostContent } from "lib/posts";
+import { countPosts, listPostContent, PostContent, fetchPostContent } from "lib/posts";
 import { listTags, TagContent } from "lib/tags";
 
 import { Layout } from "Layouts";
+
 import classes from "styles/postpage.module.css";
 
 import Link from "next/link";
 
-import {PostCard} from 'components'
+import { PostCard, PostLayout } from "components";
 
 export type Props = {
   posts: object[];
@@ -32,7 +34,7 @@ export type Props = {
   author: string;
   description?: string;
   source: MdxRemote.Source;
-  blogImage:string;
+  blogImage: string;
 };
 
 const components = { InstagramEmbed, YouTube, TwitterTweetEmbed };
@@ -75,8 +77,9 @@ export default function Post(props: Props) {
           <div className={classes.sidebarPosts}>
             {posts
               .filter((post) => post.slug !== slug)
-              .map((post) => <PostCard post={post}/>)
-            }
+              .map((post) => (
+                <PostCard post={post} />
+              ))}
           </div>
         </div>
       </div>

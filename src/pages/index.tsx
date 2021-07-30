@@ -1,18 +1,20 @@
 import { GetStaticProps } from "next";
-import BasicMeta from "components/meta/BasicMeta";
-import OpenGraphMeta from "components/meta/OpenGraphMeta";
-import TwitterCardMeta from "components/meta/TwitterCardMeta";
-import PostList from "components/PostList";
-import config from "lib/config";
-import { countPosts, listPostContent, PostContent } from "lib/posts";
-import { listTags, TagContent } from "lib/tags";
-import Head from "next/head";
 
+import {BasicMeta, OpenGraphMeta, TwitterCardMeta} from "components/meta";
+
+import config from "lib/config";
+
+import { countPosts, listPostContent, PostContent } from "lib/posts";
+
+import { listTags, TagContent } from "lib/tags";
+
+import Head from "next/head";
 import Link from "next/link";
 
 import {Layout} from "Layouts";
 
 import classes from "styles/indexpage.module.css";
+
 import { Container, PostCard } from "components";
 
 type Props = {
@@ -28,11 +30,25 @@ export default function Index({ posts, tags, pagination }: Props) {
   const title = "Home";
   let mainPost = posts[0];
   return (
-    <Layout>
+    <Layout noContainer noMargin>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
       {/*<PostList posts={posts} tags={tags} pagination={pagination} />*/}
+      <div
+        className={classes.heroWrapper}
+        style={{
+          backgroundImage:
+              `url('/herocover.jpg')`
+        }}
+      >
+        <Container classes={{container: classes.verticalAlignCenter}}>
+          <h1 className={classes.mainHeading}>
+          The number one source for WWE, AEW, IMPACT related wrestling news       
+          </h1>
+        </Container>
+      </div>
+      <Container classes={{container: classes.padding}}>
       <div className={classes.wrapper}>
         <div>
           <PostCard post={mainPost} bigHeader className={classes.mainPost}/>
@@ -47,6 +63,7 @@ export default function Index({ posts, tags, pagination }: Props) {
           </div>
         </div>
       </div>
+      </Container>
     </Layout>
   );
 }

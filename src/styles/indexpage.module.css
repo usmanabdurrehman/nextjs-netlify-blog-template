@@ -1,3 +1,21 @@
+.heroWrapper{
+	height:calc(100vh - 70px);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.verticalAlignCenter{
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	align-items: flex-end;
+	flex-direction: column;
+	color:white;
+	font-size: 28px;
+	text-align: right;
+}
+
 .wrapper{
 	display: grid;
 	grid-template-columns: 1fr 250px;
@@ -26,6 +44,11 @@
 	display: inline-block;
 }
 
+.padding{
+	padding-top:30px !important;
+	padding-bottom:30px !important;
+}
+
 @media (max-width: 905px) {
 	.wrapper {
 		display: block;
@@ -40,4 +63,8 @@
 	.sidebarWrapper{
 		margin-top:30px;
 	}
+
+	.heroWrapper h1{
+		font-size: 42px;
+	}	
 }

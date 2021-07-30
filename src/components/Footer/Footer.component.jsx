@@ -3,8 +3,8 @@ import styles from './Footer.module.css'
 
 export default function Footer() {
 	return (
-		<div className={styles.footer}>
-			Wrestling Insight, &copy; 2021
-		</div>
+		<footer className={styles.footer}>
+			WrestlingInsight, &copy; 2021
+		</footer>
 	)
 }

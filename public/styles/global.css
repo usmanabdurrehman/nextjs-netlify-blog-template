@@ -1,14 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"); */
 
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/*
+21D19F ferozish     good
+E57A44 orange       worse
+422040 purple       good
+2191FB lightblue    worse
+BA274A darkpink     okayish
+F2542D orange       
+*/  
 :root{
-  --primary:#1B998B;
+  --primary:#F2542D;
   --secondary:#EC0B43;
 }
 
 html,
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Merriweather', serif;
   background-color: #fff;
   color: #222;
   font-weight: 200;

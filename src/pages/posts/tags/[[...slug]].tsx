@@ -1,13 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import {Layout} from "Layouts";
-import BasicMeta from "../../../components/meta/BasicMeta";
-import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../../components/meta/TwitterCardMeta";
-import TagPostList from "../../../components/TagPostList";
-import config from "../../../lib/config";
-import { countPosts, listPostContent, PostContent } from "../../../lib/posts";
-import { getTag, listTags, TagContent } from "../../../lib/tags";
+
+import { Layout } from "Layouts";
+
+import {BasicMeta, OpenGraphMeta, TwitterCardMeta} from "components/meta";
+
+import config from "lib/config";
+import { countPosts, listPostContent, PostContent } from "lib/posts";
+import { getTag, listTags, TagContent } from "lib/tags";
+
 import Head from "next/head";
+
+import classes from "styles/tagpage.module.css";
+
+import { PostCard } from "components";
 
 type Props = {
   posts: PostContent[];
@@ -26,7 +31,12 @@ export default function Index({ posts, tag, pagination, page }: Props) {
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <TagPostList posts={posts} tag={tag} pagination={pagination} />
+      <h1>Posts related to {title}</h1>
+      <div className={classes.wrapper}>
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
     </Layout>
   );
 }

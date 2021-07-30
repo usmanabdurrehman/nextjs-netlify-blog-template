@@ -19,11 +19,15 @@ import classes from "./Layout.module.css";
 // Router.onRouteChangeComplete = () => NProgress.done();
 // Router.onRouteChangeError = () => NProgress.done();
 
+import {classNames} from 'utils'
+
 type Props = {
   children: React.ReactNode;
+  noContainer: boolean;
+  noMargin:boolean;
 };
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children, noContainer, noMargin }: Props) {
   return (
     <div className={classes.root}>
       <Head>
@@ -32,27 +36,23 @@ export default function Layout({ children }: Props) {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="/icon.png" />
         <meta name="theme-color" content="#fff" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <Navbar/>
+      <Navbar />
       <div className={classes.wrapper}>
-        <Container>
-          <main className={classes.main}>{children}</main>
-        </Container>
+        {noContainer ? (
+          <main className={classNames({
+             [classes.main]:!noMargin
+          })}>{children}</main>
+        ) : (
+          <Container>
+            <main className={classNames({
+             [classes.main]:!noMargin
+          })}>{children}</main>
+          </Container>
+        )}
       </div>
       <Footer />
-      <style jsx>{`
-        main {
-          margin: 30px 0;
-        }
-        .wrapper {
-          flex: 1;
-        }
-        .root {
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-        }
-      `}</style>
     </div>
   );
 }

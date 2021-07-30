@@ -26,9 +26,3 @@ export default function PostCard({ post, bigHeader=false, className='' }) {
 		</Link>
 	);
 }
-
-// PostCard.propTypes = {
-// 	post:PropTypes.arrayOf(PropTypes.object),
-//   	bigHeader:PropTypes.bool,
-//   	className:PropTypes.string
-// }
