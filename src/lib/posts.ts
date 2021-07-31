@@ -45,7 +45,6 @@ export function fetchPostContent(): PostContent[] {
       matterData.fullPath = fullPath;
 
       const slug = fileName.replace(/\.mdx$/, "");
-      slug=='cm-punk' && console.log(matterResult)
       // Validate slug string
       if (matterData.slug !== slug) {
         throw new Error(

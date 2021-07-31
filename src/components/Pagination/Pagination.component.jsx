@@ -8,7 +8,7 @@ export default function Pagination({ current, pages, link }) {
   return (
     <ul className={styles.list}>
       {pagination.map((it, i) => (
-        <li key={i}>
+        <li key={i} className={styles.listItem}>
           {it.excerpt ? (
             "..."
           ) : (

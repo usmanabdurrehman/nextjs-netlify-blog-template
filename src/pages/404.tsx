@@ -1,13 +1,13 @@
 import Error from "next/error";
 import Head from "next/head";
 
-export default function Error() {
+export default function NextError() {
 	return (
 		<>
 			<Head>
-				<meta name="robots" content="noindex" />
+				<meta name="robots" content="none" />
 			</Head>{" "}
-			<Error />
+			<Error statusCode={404}/>
 		</>
 	);
 }
