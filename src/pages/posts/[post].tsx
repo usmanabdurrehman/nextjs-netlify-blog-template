@@ -14,7 +14,12 @@ import InstagramEmbed from "react-instagram-embed";
 import YouTube from "react-youtube";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
-import { countPosts, listPostContent, PostContent, fetchPostContent } from "lib/posts";
+import {
+  countPosts,
+  listPostContent,
+  PostContent,
+  fetchPostContent,
+} from "lib/posts";
 import { listTags, TagContent } from "lib/tags";
 
 import { Layout } from "Layouts";

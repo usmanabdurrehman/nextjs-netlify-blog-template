@@ -1,6 +1,8 @@
 import { GetStaticProps } from "next";
 
-import {BasicMeta, OpenGraphMeta, TwitterCardMeta} from "components/meta";
+import { useEffect } from "react";
+
+import { BasicMeta, OpenGraphMeta, TwitterCardMeta } from "components/meta";
 
 import config from "lib/config";
 
@@ -11,7 +13,7 @@ import { listTags, TagContent } from "lib/tags";
 import Head from "next/head";
 import Link from "next/link";
 
-import {Layout} from "Layouts";
+import { Layout } from "Layouts";
 
 import classes from "styles/indexpage.module.css";
 
@@ -29,6 +31,18 @@ export default function Index({ posts, tags, pagination }: Props) {
   const url = "/";
   const title = "Home";
   let mainPost = posts[0];
+
+  // const addThisRef = useRef()
+
+  // useEffect(() => {
+  //   if(document) addThisRef.current = document?.querySelector('.addthis-smartlayers')
+  //   let addThis = document?.querySelector('.addthis-smartlayers')
+  //   if(addThis) addThis.style.display = 'none'
+  //   return () => {
+  //      if(addThis) addThis.style.display = 'block';
+  //   }
+  // },[addThisRef.current])
+
   return (
     <Layout noContainer noMargin>
       <BasicMeta url={url} title={title} />
@@ -38,31 +52,32 @@ export default function Index({ posts, tags, pagination }: Props) {
       <div
         className={classes.heroWrapper}
         style={{
-          backgroundImage:
-              `url('/herocover.jpg')`
+          backgroundImage: `url('/herocover.jpg')`,
         }}
       >
-        <Container classes={{container: classes.verticalAlignCenter}}>
+        <Container classes={{ container: classes.verticalAlignCenter }}>
           <h1 className={classes.mainHeading}>
-          The number one source for WWE, AEW, IMPACT related wrestling news       
+            The number one source for WWE, AEW, IMPACT related wrestling news
           </h1>
         </Container>
       </div>
-      <Container classes={{container: classes.padding}}>
-      <div className={classes.wrapper}>
-        <div>
-          <PostCard post={mainPost} bigHeader className={classes.mainPost}/>
-          <div className={classes.posts}>
-            {posts?.length>=2 && posts.slice(1, 3).map((post) => <PostCard post={post}/>)}
+      <Container classes={{ container: classes.padding }}>
+        <div className={classes.wrapper}>
+          <div>
+            <PostCard post={mainPost} bigHeader className={classes.mainPost} />
+            <div className={classes.posts}>
+              {posts?.length >= 2 &&
+                posts.slice(1, 3).map((post) => <PostCard post={post} />)}
+            </div>
+          </div>
+          <div className={classes.sidebarWrapper}>
+            <div className={classes.recentHeader}>Recent</div>
+            <div className={classes.sidebarPosts}>
+              {posts?.length >= 4 &&
+                posts.slice(3).map((post) => <PostCard post={post} />)}
+            </div>
           </div>
         </div>
-        <div className={classes.sidebarWrapper}>
-          <div className={classes.recentHeader}>Recent</div>
-          <div className={classes.sidebarPosts}>
-            {posts?.length>=4 && posts.slice(3).map((post) => <PostCard post={post}/>)}
-          </div>
-        </div>
-      </div>
       </Container>
     </Layout>
   );

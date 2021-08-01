@@ -9,7 +9,7 @@ import { getTag } from "lib/tags";
 
 import classes from "./PostLayout.module.css";
 
-import { ShareList, TagButton } from "components";
+import { TagButton, ShareList } from "components";
 
 import { format, formatISO } from "date-fns";
 
@@ -70,7 +70,7 @@ export default function PostLayout({
                   </span>
                 </div>
               </div>
-              <ShareList />
+              <ShareList/>
             </div>
           </header>
           {blogImage && <img src={blogImage} className={classes.blogImage} />}

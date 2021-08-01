@@ -29,6 +29,10 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61056089b5788947"
+          ></script>
         </body>
       </Html>
     );

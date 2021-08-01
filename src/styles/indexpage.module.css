@@ -68,3 +68,9 @@
 		font-size: 42px;
 	}	
 }
+
+@media(max-width: 600px){
+	.heroWrapper h1{
+		font-size: 28px;
+	}
+}
